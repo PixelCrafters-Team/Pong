@@ -1,5 +1,6 @@
 # Pong
 Jogo de Ping Pong realizado na Godot 
 
-<img width="668" alt="image" src="https://github.com/PixelCrafters-Team/Pong/assets/88254161/167c9934-54d4-416d-9ffc-7417c76af99e">
+![image](https://github.com/PixelCrafters-Team/Pong/assets/88253809/fbf93d99-b1ed-4c34-a291-00f951efc58c)
+
 
