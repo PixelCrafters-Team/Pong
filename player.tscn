@@ -1,32 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdo2qrljp23bd"]
+[gd_scene load_steps=5 format=3 uid="uid://db7kbwft3mcdt"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_52mcg"]
+[ext_resource type="Script" path="res://Player.gd" id="1_hb4yj"]
+[ext_resource type="Texture2D" uid="uid://d32fvtvrrpnti" path="res://assets/foguete.png" id="2_drbia"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lajt7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x147x"]
+size = Vector2(33, 146.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ssi0"]
-size = Vector2(24, 94)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l05we"]
-size = Vector2(28, 101)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_woasb"]
+size = Vector2(45, 160)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_52mcg")
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hb4yj")
+metadata/_edit_horizontal_guides_ = []
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4.76837e-07, 0)
-scale = Vector2(23.6875, 93.3125)
-texture = SubResource("PlaceholderTexture2D_lajt7")
+position = Vector2(6, 35)
+scale = Vector2(0.202731, 0.189815)
+texture = ExtResource("2_drbia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_3ssi0")
+position = Vector2(8.5, 33.75)
+shape = SubResource("RectangleShape2D_x147x")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_l05we")
+position = Vector2(8.5, 33)
+shape = SubResource("RectangleShape2D_woasb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

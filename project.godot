@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="PingPong"
-run/main_scene="res://Game.tscn"
+config/name="pong"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,4 +21,4 @@ Main="*res://main.gd"
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.196078, 0.00392157, 0.176471, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
