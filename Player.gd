@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+var SPEED = 450.0
 @export var side = 'p1'
+
 
 func _physics_process(delta):
 	var direction 
@@ -9,7 +10,7 @@ func _physics_process(delta):
 	if side == 'p1':
 		direction = get_axis(KEY_W, KEY_S)
 	else:
-		direction = get_axis(KEY_I, KEY_K)
+		direction = get_axis(KEY_UP, KEY_DOWN)
 		
 	if direction:
 		velocity.y = direction * SPEED
@@ -37,3 +38,9 @@ func _on_area_2d_body_entered(body):
 	
 	var sound_player = get_parent().get_node("AudioStreamPlayer2D")
 	sound_player.play()
+	
+	var ball =  get_parent().get_node('Ball')
+	if ball != null:
+		ball.SPEED += 50
+		SPEED += 10
+	

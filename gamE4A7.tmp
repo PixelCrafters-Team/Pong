@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3 uid="uid://l7itu48yv5in"]
+
+[ext_resource type="PackedScene" uid="uid://db7kbwft3mcdt" path="res://player.tscn" id="1_rrvkp"]
+[ext_resource type="Script" path="res://game.gd" id="1_vkssw"]
+[ext_resource type="Texture2D" uid="uid://d24k28h53bn8m" path="res://assets/fundo.jpeg" id="2_ov22x"]
+[ext_resource type="PackedScene" uid="uid://csi46j0u7gamx" path="res://Ball.tscn" id="2_sky86"]
+[ext_resource type="AudioStream" uid="uid://c63h6ifpoxfy6" path="res://assets/Pop.ogg" id="5_7rc7f"]
+[ext_resource type="PackedScene" uid="uid://dj62j3dsc3pv8" path="res://elements/terra/terra.tscn" id="6_kcc2b"]
+[ext_resource type="Resource" uid="uid://bs4w5rk7ce7mq" path="res://data/items/saturno.tres" id="7_l36af"]
+[ext_resource type="Script" path="res://UIRoot.gd" id="8_0qt1o"]
+[ext_resource type="Script" path="res://Inventory.gd" id="8_ikgv4"]
+[ext_resource type="PackedScene" uid="uid://cpk6x85hbwhh2" path="res://item_slot/item_slot.tscn" id="9_5hqir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2uqd"]
+size = Vector2(1140.07, 62.0588)
+
+[sub_resource type="SystemFont" id="SystemFont_njtjx"]
+font_names = PackedStringArray("Franklin Gothic")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vkssw")
+
+[node name="Fundo" type="Sprite2D" parent="."]
+position = Vector2(564, 362)
+texture = ExtResource("2_ov22x")
+
+[node name="Top" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(580, -22)
+shape = SubResource("RectangleShape2D_r2uqd")
+
+[node name="Bottom" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(578, 674)
+shape = SubResource("RectangleShape2D_r2uqd")
+
+[node name="Left" type="Area2D" parent="."]
+position = Vector2(-2, -2)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-19, 267)
+rotation = 1.57942
+shape = SubResource("RectangleShape2D_r2uqd")
+
+[node name="Rigtht" type="Area2D" parent="."]
+position = Vector2(1162, -32)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rigtht"]
+position = Vector2(16, 256)
+rotation = 1.57942
+shape = SubResource("RectangleShape2D_r2uqd")
+
+[node name="Player" parent="." instance=ExtResource("1_rrvkp")]
+position = Vector2(88, 286)
+
+[node name="Player2" parent="." instance=ExtResource("1_rrvkp")]
+position = Vector2(1054, 294)
+side = "p2"
+
+[node name="Ball" parent="." instance=ExtResource("2_sky86")]
+position = Vector2(588, 327)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 337.0
+offset_top = 51.0
+offset_right = 384.0
+offset_bottom = 146.0
+theme_override_fonts/font = SubResource("SystemFont_njtjx")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 801.0
+offset_top = 53.0
+offset_right = 848.0
+offset_bottom = 148.0
+theme_override_fonts/font = SubResource("SystemFont_njtjx")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7rc7f")
+
+[node name="terra" parent="." instance=ExtResource("6_kcc2b")]
+
+[node name="saturno" parent="." instance=ExtResource("6_kcc2b")]
+position = Vector2(70, 0)
+item = ExtResource("7_l36af")
+
+[node name="UIRoot" type="CanvasLayer" parent="."]
+script = ExtResource("8_0qt1o")
+
+[node name="Inventory" type="PanelContainer" parent="UIRoot"]
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 533.0
+offset_bottom = 146.0
+script = ExtResource("8_ikgv4")
+slot_scene = ExtResource("9_5hqir")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIRoot/Inventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="UIRoot/Inventory/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Rigtht" to="." method="_on_rigtht_body_entered"]

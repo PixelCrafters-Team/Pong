@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bs4w5rk7ce7mq"]
+
+[ext_resource type="Texture2D" uid="uid://pplwlk43168" path="res://assets/saturno.png" id="1_fm6pa"]
+[ext_resource type="Script" path="res://model/item.gd" id="1_g3fun"]
+
+[resource]
+script = ExtResource("1_g3fun")
+name = "saturno"
+scene = ExtResource("1_fm6pa")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpk6x85hbwhh2"]
+
+[ext_resource type="Texture2D" uid="uid://xp2ifutjfhhq" path="res://assets/terra.png" id="1_chx8l"]
+[ext_resource type="Script" path="res://item_slot/item_slot.gd" id="1_uq5qx"]
+
+[node name="ItemSlot" type="PanelContainer"]
+offset_right = 717.0
+offset_bottom = 559.0
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_uq5qx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_chx8l")
